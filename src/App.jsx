@@ -7,13 +7,16 @@ export default function App() {
   function generateAllNewDice() {
     const dice = []
     for (let i = 0; i < 10; i++){
-      dice.push(Math.floor(Math.random() * 6) + 1)
+      dice.push({
+        value: Math.floor(Math.random() * 6) + 1,
+        isHeld: false
+      })
     }
     return dice
   }
 
   const diceItems = dice.map((die, index) => (
-    <Die key={index} value={die}/>
+    <Die key={index} value={die.value}/>
   ))
 
   function handleClick() {
