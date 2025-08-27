@@ -4,6 +4,22 @@ import Die from "./Die"
 export default function App() {
   const [dice, setDice] = React.useState(generateAllNewDice())
 
+  var gameWon = checkIfWon()
+
+  function checkIfWon() {
+    const firstValue = dice[0].value
+
+    for (const die of dice){
+      if (!die.isHeld || die.value !== firstValue) {
+        return false
+      }
+    }
+
+    return true
+  }
+
+  console.log(gameWon)
+
   function generateAllNewDice() {
     const dice = []
     for (let i = 0; i < 10; i++){
