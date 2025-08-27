@@ -1,5 +1,6 @@
 import React from "react"
 import Die from "./Die"
+import Confetti from 'react-confetti'
 
 export default function App() {
   const [dice, setDice] = React.useState(generateAllNewDice())
@@ -54,12 +55,14 @@ export default function App() {
 
   return (
     <main>
+      {gameWon && <Confetti />}
       <h1 className="title">Tenzies</h1>
       <p className="gameInstructions">Try rolling the dice until they're all the same ! Click each die to hold it at its current value between rolls.</p>
       <div className="diceContainer">
         {diceItems}
       </div>
       <button className="rollButton" onClick={roll}>{gameWon ? "New Game" : "Roll"}</button>
+      
     </main>
   )
 }
