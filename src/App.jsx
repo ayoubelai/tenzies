@@ -9,14 +9,22 @@ export default function App() {
     for (let i = 0; i < 10; i++){
       dice.push({
         value: Math.floor(Math.random() * 6) + 1,
-        isHeld: true
+        isHeld: true,
+        id: i
       })
     }
     return dice
   }
 
-  const diceItems = dice.map((die, index) => (
-    <Die key={index} value={die.value} isHeld={die.isHeld}/>
+  function hold(id) {
+    const newDice = dice.map(die => 
+      die.id === id ? {...die, isHeld: !die.isHeld} : die
+    )
+    setDice(newDice)
+  }
+
+  const diceItems = dice.map(die => (
+    <Die key={die.id} id={die.id} value={die.value} isHeld={die.isHeld} hold={hold}/>
   ))
 
   function handleClick() {
