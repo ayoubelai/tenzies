@@ -40,6 +40,8 @@ export default function App() {
 
   return (
     <main>
+      <h1 className="title">Tenzies</h1>
+      <p className="gameInstructions">Try rolling the dice until they're all the same ! Click each die to hold it at its current value between rolls.</p>
       <div className="diceContainer">
         {diceItems}
       </div>
