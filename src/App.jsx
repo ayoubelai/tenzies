@@ -4,7 +4,7 @@ import Die from "./Die"
 export default function App() {
   const [dice, setDice] = React.useState(generateAllNewDice())
 
-  var gameWon = checkIfWon()
+  const gameWon = checkIfWon()
 
   function checkIfWon() {
     const firstValue = dice[0].value
@@ -17,8 +17,6 @@ export default function App() {
 
     return true
   }
-
-  console.log(gameWon)
 
   function generateAllNewDice() {
     const dice = []
@@ -61,7 +59,7 @@ export default function App() {
       <div className="diceContainer">
         {diceItems}
       </div>
-      <button className="rollButton" onClick={roll}>Roll</button>
+      <button className="rollButton" onClick={roll}>{gameWon ? "New Game" : "Roll"}</button>
     </main>
   )
 }
