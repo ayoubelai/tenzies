@@ -3,7 +3,7 @@ import Die from "./Die"
 import Confetti from 'react-confetti'
 
 export default function App() {
-  const [dice, setDice] = React.useState(generateAllNewDice())
+  const [dice, setDice] = React.useState(() => generateAllNewDice())
 
   const gameWon = checkIfWon()
 
