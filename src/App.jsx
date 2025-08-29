@@ -53,6 +53,10 @@ export default function App() {
     setDice(newDice)
   }
 
+  function newGame() {
+    setDice(generateAllNewDice())
+  }
+
   return (
     <main>
       {gameWon && <Confetti />}
@@ -61,7 +65,7 @@ export default function App() {
       <div className="diceContainer">
         {diceItems}
       </div>
-      <button className="rollButton" onClick={roll}>{gameWon ? "New Game" : "Roll"}</button>
+      <button className="rollButton" onClick={gameWon ? newGame : roll}>{gameWon ? "New Game" : "Roll"}</button>
       
     </main>
   )
