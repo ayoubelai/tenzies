@@ -85,3 +85,28 @@ button {
   text-align: center;
   margin: 0 50px;
 }
+
+.rollButton.tenzies {
+  background-color: #5035FF;
+  color: white;
+  box-shadow: 0 0 15px #5035FF;
+  animation: pulse 1s infinite alternate, bounce 0.8s infinite;
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 10px #5035FF;
+  }
+  to {
+    box-shadow: 0 0 30px #8A6BFF;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}

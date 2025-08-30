@@ -4,8 +4,16 @@ import Confetti from 'react-confetti'
 
 export default function App() {
   const [dice, setDice] = React.useState(() => generateAllNewDice())
+  const [tenzies, setTenzies] = React.useState(false)
 
   const gameWon = checkIfWon()
+  let buttonText = "Roll"
+
+  if (tenzies) {
+    buttonText = "New Game"
+  } else if (gameWon) {
+    buttonText = "Tenzies !"
+  }
 
   function checkIfWon() {
     const firstValue = dice[0].value
@@ -54,18 +62,24 @@ export default function App() {
   }
 
   function newGame() {
-    setDice(generateAllNewDice())
+    if (tenzies) {
+      setDice(generateAllNewDice())
+      setTenzies(false)
+    } else {
+      setTenzies(true)
+    }
   }
 
   return (
     <main>
-      {gameWon && <Confetti />}
+      {tenzies && <Confetti />}
       <h1 className="title">Tenzies</h1>
-      <p className="gameInstructions">Try rolling the dice until they're all the same ! Click each die to hold it at its current value between rolls.</p>
+      <p className="gameInstructions">Try rolling the dice until they're all the same then yell (Click) Tenzies !
+         Click each die to hold it at its current value between rolls.</p>
       <div className="diceContainer">
         {diceItems}
       </div>
-      <button className="rollButton" onClick={gameWon ? newGame : roll}>{gameWon ? "New Game" : "Roll"}</button>
+      <button className={`rollButton ${gameWon ? "tenzies" : ""}`} onClick={gameWon ? newGame : roll}>{buttonText}</button>
       
     </main>
   )
